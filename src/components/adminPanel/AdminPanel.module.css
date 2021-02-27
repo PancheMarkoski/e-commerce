@@ -1,0 +1,61 @@
+.Wrapper {
+  margin: 5rem;
+}
+
+.CreateProductForm {
+  margin: 2.5rem;
+}
+
+.ProductInput {
+  border-radius: 2.5rem;
+  width: 50rem;
+  display: block;
+}
+
+.ProductInput:focus {
+  outline: none !important;
+  border-color: #ff416c;
+  box-shadow: 0 0 10px #ff416c;
+}
+
+.Btn {
+  transition: all 250ms ease-in-out;
+  margin-top: 3rem;
+}
+
+.Btn:hover {
+  background-color: #ff416c;
+}
+
+.H {
+  color: #712020c9;
+  margin-top: 2rem;
+}
+
+.SelectField {
+  position: relative;
+  display: block;
+  width: 186px;
+  font-size: 19px;
+  padding: 3px;
+  font-weight: 300;
+  color: #5f5f5f;
+  line-height: 88px;
+  background: #eaeaea;
+  border-radius: 4px;
+  cursor: pointer;
+  border: 1px solid #5f5f5f;
+  transition: all 0.3s;
+  margin: 10px 0px;
+}
+
+.SelectField:focus {
+  outline: none !important;
+  border-color: #ff416c;
+  box-shadow: 0 0 10px #ff416c;
+}
+
+.Link {
+  text-decoration: none;
+  color: rgb(53, 5, 5);
+}

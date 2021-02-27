@@ -1,0 +1,9 @@
+.NavBar {
+  list-style-type: none;
+  margin: 0.5rem 2rem;
+  padding: 0rem 4rem;
+  overflow: hidden;
+  background-color: #d3d2d2;
+  display: flex;
+  justify-content: space-between;
+}

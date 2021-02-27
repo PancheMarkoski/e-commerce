@@ -1,0 +1,14 @@
+.NavBarLink {
+  display: block;
+  color: rgb(10, 10, 10);
+  text-align: center;
+  padding: 2rem 1rem;
+  margin: 0.2rem;
+  text-decoration: none;
+  display: inline-block;
+  border-bottom: 3px solid #d3d2d2;
+}
+
+.NavBarLink:hover {
+  border-bottom: 3px solid black;
+}

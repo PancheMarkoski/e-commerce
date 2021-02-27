@@ -1,0 +1,55 @@
+.FilterBarWrap {
+  width: 100%;
+}
+
+.FilterBar {
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #ff416c;
+  margin: auto;
+  padding: 0.5rem;
+  border-radius: 20px;
+  width: 60%;
+}
+
+.Link {
+  text-decoration: none;
+  color: aliceblue;
+  padding: 0.2rem;
+  margin: 1rem;
+  background-color: #ff416c;
+}
+
+.SearchFilter {
+  display: flex;
+  padding: 0;
+  margin: 0;
+  border-radius: 20px;
+  box-sizing: border-box;
+}
+.Search {
+  border-radius: 20px;
+  width: 40%;
+  margin-left: 10rem;
+}
+
+.Search:focus {
+  outline: none !important;
+}
+
+.BtnSearch {
+  width: 5rem;
+  background-color: black;
+}
+
+@media only screen and (max-width: 800px) {
+  .FilterBar {
+    display: flex;
+    flex-direction: column;
+  }
+  .Search {
+    margin: 2rem;
+  }
+}
