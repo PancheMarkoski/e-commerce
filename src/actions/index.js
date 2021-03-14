@@ -128,27 +128,34 @@ export const createProduct = (createProductFormValues) => async (dispatch, getSt
     const response = await fireDb.post("/products.json", { ...createProductFormValues, uid, localId})
     dispatch({ type: CREATE_PRODUCT, payload: response.data})
 
-    // reload
-    window.location.reload();
+   // // reload
+   // window.location.reload();
+   
     // push to homepage
     history.push('/')
 }
 
 // get products data from firebase
 export const fetchProducts = () => async dispatch => {
-   const response = await fireDb.get("/products.json")
+   
+   await fireDb.get("/products.json")
    
    .then((res) => {
       const fatchedProducts = [];
       for (let key in res.data) {
-         fatchedProducts.push({
-          ...res.data[key],
-          id: key,
-        });
+         if(key) {
+            fatchedProducts.push({
+               ...res.data[key],
+               id: key,
+             });
+         }
+      
       }
       dispatch({ type: FETCH_PRODUCTS, payload: fatchedProducts});   
     })
 
+   //   // reload
+   //    window.location.reload();  
    
 }
 
@@ -156,14 +163,18 @@ export const fetchProducts = () => async dispatch => {
 export const fetchProduct = (id) => async dispatch => {
    const response = await fireDb.get(`/products/${id}.json`)
 
-   dispatch({ type: FETCH_PRODUCT, payload: response.data })
+   dispatch({ type: FETCH_PRODUCT, payload: response.data, ID: id })
 }
 
 // edit product data
 export const editProduct = (id, productFormValue) => async dispatch => {
-   const response = await fireDb.put(`/products/${id}.json`, productFormValue)
+   const response = await fireDb.patch(`/products/${id}.json`, productFormValue)
 
-   dispatch({ type: EDIT_PRODUCT, payload: response.data })
+   dispatch({ type: EDIT_PRODUCT, payload: response.data, ID: id })
+   // // reload
+   // window.location.reload();
+   // push to homepage
+   history.push('/myproducts')
 }
 
 // delete product data
@@ -171,4 +182,5 @@ export const deleteProduct = (id) => async dispatch => {
    await fireDb.delete(`/products/${id}.json`)
 
    dispatch({type: DELETE_PRODUCT, payload: id})
+   history.push('/myproducts')
 }

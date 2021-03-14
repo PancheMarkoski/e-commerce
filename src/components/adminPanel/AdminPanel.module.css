@@ -8,8 +8,8 @@
 
 .ProductInput {
   border-radius: 2.5rem;
-  width: 50rem;
   display: block;
+  width: 50%;
 }
 
 .ProductInput:focus {

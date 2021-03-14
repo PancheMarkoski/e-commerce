@@ -7,7 +7,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: #ff416c;
+  background-color: #712020c9;
   margin: auto;
   padding: 0.5rem;
   border-radius: 20px;
@@ -19,7 +19,8 @@
   color: aliceblue;
   padding: 0.2rem;
   margin: 1rem;
-  background-color: #ff416c;
+  background-color: transparent;
+  cursor: pointer;
 }
 
 .SearchFilter {

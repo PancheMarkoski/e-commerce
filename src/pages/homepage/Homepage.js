@@ -20,7 +20,6 @@ const Homepage = () => {
 
     return (
         <div>
-            HomePage
             <FilterBar 
             getSerachTerm={getSerachTerm} 
             getCategory={getCategory}/>

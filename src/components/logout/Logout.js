@@ -2,7 +2,7 @@ import React, {useEffect} from 'react';
 import {connect, useDispatch} from 'react-redux'
 import { logout } from '../../actions'
 import {Redirect} from 'react-router-dom'
-import firebase, {auth} from '../../firebase'
+import firebase from '../../firebase'
 
 
 

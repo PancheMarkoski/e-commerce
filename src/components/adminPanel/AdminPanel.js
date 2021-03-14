@@ -1,15 +1,13 @@
 import React, { useState, Fragment }  from 'react'
 import {storage} from '../../firebase' 
-import {connect, useDispatch} from 'react-redux'
 
-import {createProduct} from '../../actions'
 import classes from './AdminPanel.module.css'
+import AdminFilter from './adminFilter/AdminFilter'
 
 
-
-const AdminPanel = () => {
-  const [title, setTitle] = useState("")
-  const [desc, setDesc] = useState("")
+const AdminPanel = ({onSubmitHandler, HeaderTitle, TitlePlaceholder="", DescPlaceholder=""}) => {
+  const [title, setTitle] = useState(TitlePlaceholder)
+  const [desc, setDesc] = useState(DescPlaceholder)
   const [selectedFile, setSelectedFile] = useState()
   const [imageUrl, setimageUrl] = useState()
   const [selecOptiontValue, setSelectOptionValue] = useState("cat1")
@@ -18,9 +16,6 @@ const AdminPanel = () => {
   const [titleError, setTitleError] = useState({})
   const [descError, setDescError] = useState({})
   const [selectedFileError, setselectedFileError] = useState({})
-
-  // dispatch
-  const dispatch = useDispatch();
 
 
   const handleDropdownChange = (e) => {
@@ -59,8 +54,8 @@ const AdminPanel = () => {
           
           }
           console.log(createProductFormValues)
-          dispatch(createProduct(createProductFormValues))
-          
+          //dispatch(createProduct(createProductFormValues))
+          onSubmitHandler(createProductFormValues)
           
         })
       }
@@ -133,7 +128,7 @@ const AdminPanel = () => {
 
   return (
     <Fragment>
-      <h2 className={classes.H}>Create Product</h2>
+      <h2 className={classes.H}>{HeaderTitle}</h2>
       <form onSubmit={onSubmit} className={classes.Wrapper}>
         <label>Product Image</label>
         <input 
@@ -176,12 +171,13 @@ const AdminPanel = () => {
               <option value="cat2">Category2</option>
         </select>
           <button className={classes.Btn}>Submit</button>
-        <img src={imageUrl} width='300rem' height="300rem" style={{marginTop: "9px"}} />
+        {/* <img alt={title} src={imageUrl} width='300rem' height="300rem" style={{marginTop: "9px"}} /> */}
       </form>
+          <AdminFilter />
       </Fragment>
   )
 }
 
 
 
-export default connect(null, {createProduct})(AdminPanel)
+export default AdminPanel

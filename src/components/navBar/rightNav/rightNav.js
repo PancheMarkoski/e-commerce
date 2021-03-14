@@ -9,9 +9,9 @@ const rightNav = ({isAuth}) => {
     return (
         <div className={classes.NavBarLink}>
 
-            {isAuth ? null : <Links linkName="Admin" path="adminpanel" />}
-            {isAuth ? <Links linkName="Sign In" path="signin"/> 
-            : <Links linkName="Logout" path="logout" />
+            {isAuth ? null : <Links linkName="Admin" path="/create/product" />}
+            {isAuth ? <Links linkName="Sign In" path="/signin"/> 
+            : <Links linkName="Logout" path="/logout" />
             }
                 
         </div>

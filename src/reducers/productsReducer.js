@@ -12,14 +12,14 @@ export default (state = {}, action) => {
         case FETCH_PRODUCTS:
             return {...state, ..._.mapKeys(action.payload, 'id')}
         case FETCH_PRODUCT:
-            return { ...state, [action.payload.id]: action.payload }
+            return { ...state, [action.ID]: action.payload }
         case CREATE_PRODUCT:
-            return { ...state, [action.payload.id]: action.payload }
+            return { ...state, [action.payload.name]: action.payload }
         case EDIT_PRODUCT:
-            return { ...state, [action.payload.id]: action.payload }
+            return { ...state, [action.ID]: action.payload }
         case DELETE_PRODUCT:
             return _.omit(state, action.payload);
-        default: 
+        default:    
             return state;
     }
 }

@@ -3,7 +3,6 @@ import React from 'react'
 import classes from './FilterBar.module.css'
 
 const FilterBar = ({getSerachTerm, getCategory}) => {
-    //const [category, setCategory] = useState('')
    
     
     const onChangeHandler = (e) => {

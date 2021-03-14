@@ -9,13 +9,16 @@ import NavBar from './components/navBar/navBar'
 import SignUp from './components/signUpIn/signUpIn'
 import Logout from './components/logout/Logout'
 import ForgotPassword from './components/forgotPassword/ForgotPassword'
-import AdminPanel from './components/adminPanel/AdminPanel'
+import CreateProduct from './components/adminPanel/createProduct/CreateProduct'
+import MyProducts from "./components/adminPanel/myProducts/MyProducts"
+import EditProduct from './components/adminPanel/editProduct/EditProduct'
+import ProductDetails from './components/productsList/productDetails/ProductDetails'
 
 const App = ({isAuth}) => {
   const dispatch = useDispatch()
   useEffect(() => {
     dispatch(authCheckState())
-  }, []);
+  }, );
 
 
   let route = (
@@ -29,11 +32,15 @@ const App = ({isAuth}) => {
   if(!isAuth) {
     route = (
         <Switch>
-          <Route path="/" exact component={Homepage} />
           <Route path="/logout" exact component={Logout} />  
           <Route path="/forgotpassword" exact component={ForgotPassword} />  
-          <Route path="/adminpanel" exact component={AdminPanel} />  
-          <Redirect to="/" />
+          <Route path="/myproducts" exact component={MyProducts} />  
+          <Route path="/myproducts/delete/:id" exact component={MyProducts} />  
+          <Route path="/create/product" exact component={CreateProduct} />  
+          <Route path="/edit/product/:id" exact component={EditProduct} />  
+          <Route path="/product/details/:id" exact component={ProductDetails} />  
+          <Route path="/" exact component={Homepage} />
+          <Redirect to="/" /> 
         </Switch>
       
     )
@@ -43,7 +50,6 @@ const App = ({isAuth}) => {
     <Router history={ history }>
       <NavBar />
        {route}
-      
     </Router>
   )
 }
