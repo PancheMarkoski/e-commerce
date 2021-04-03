@@ -1,7 +1,29 @@
 .Header {
-  height: 95vh;
+  display: flex;
+  justify-content: flex-start;
+  padding: 0 1rem;
+}
+.HeaderImg {
+  height: 60vh;
   background-size: cover;
-  background-position: top;
+  background-position: center;
   clip-path: polygon(0 0, 100% 0, 100% 80%, 0 100%);
   position: relative;
+  margin: 0 2rem;
+  width: 100vh;
+  margin: 0rem 1rem;
+}
+
+.HeaderDetails {
+  width: 100%;
+}
+
+.ParagtaphDetails {
+  max-width: 60rem;
+  text-align: center;
+}
+
+.HeadingTitle {
+  margin: 2rem 0rem;
+  color: #712020c9;
 }

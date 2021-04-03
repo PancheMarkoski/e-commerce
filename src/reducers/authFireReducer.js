@@ -1,5 +1,6 @@
 import {SIGN_IN, SIGN_ERR, SIGN_IN_USER, AUTH_LOGOUT, SIGN_IN_WITH_GOOGLE} from '../actions/types';
 
+
 const INITIAL_STATE = {
     authData: null,
     isSignedIn: null,

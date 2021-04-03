@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import {connect, useDispatch} from 'react-redux'
-import { fetchProducts } from '../../actions'
+import { fetchProducts, addToCart } from '../../actions'
 import { Link } from 'react-router-dom'
 
 import classes from './productsList.module.css'
@@ -11,8 +11,7 @@ const ProductsList = ({products, term, category}) => {
 
     const dispatch = useDispatch()
     useEffect(() => {
-         dispatch(fetchProducts())
-        
+         dispatch(fetchProducts())        
       },[]);
       console.log(products)
       
@@ -24,10 +23,9 @@ const ProductsList = ({products, term, category}) => {
            return product
          }
        }).map(product => {
-         if(category === true) {
 
-           if(product.title) {
-               
+         if(category === true) {
+           if(product.id) {
                return(
                 <li key={product.id} className={classes.CardsItem}>
                   <div className={classes.Card}>
@@ -41,8 +39,9 @@ const ProductsList = ({products, term, category}) => {
                     </Link>
                     <div className={classes.CardContent}>
                       <div className={classes.CardTitle}>{product.title}</div>
-                      <p className={classes.CardText}>{product.desc}</p>
-                      <button className={classes.Btn}>Add to cart</button>
+                      <p className={classes.CardText}>{product.desc.slice(0, 100)}</p>
+                      <div className={classes.CardPrice}>{product.price}$</div>
+                      <button onClick={() => dispatch(addToCart(product.id))} className={classes.Btn}>Add to cart</button>
                     </div>
                   </div>
                 </li>
@@ -65,8 +64,9 @@ const ProductsList = ({products, term, category}) => {
                 </Link>
                  <div className={classes.CardContent}>
                    <div className={classes.CardTitle}>{product.title}</div>
-                   <p className={classes.CardText}>{product.desc}</p>
-                   <button className={classes.Btn}>Add to cart</button>
+                   <p className={classes.CardText}>{product.desc.slice(0, 100)}</p>
+                   <div className={classes.CardPrice}>{product.price}$</div>
+                   <button onClick={() => dispatch(addToCart(product.id))} className={classes.Btn}>Add to cart</button>
                  </div>
                </div>
              </li>
@@ -90,4 +90,4 @@ const mapStateToProps = state => {
     return {products: Object.values(state.products)}
 }
 
-export default connect(mapStateToProps, {fetchProducts})(ProductsList)
+export default connect(mapStateToProps, {fetchProducts, addToCart})(ProductsList)

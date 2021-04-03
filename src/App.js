@@ -13,6 +13,7 @@ import CreateProduct from './components/adminPanel/createProduct/CreateProduct'
 import MyProducts from "./components/adminPanel/myProducts/MyProducts"
 import EditProduct from './components/adminPanel/editProduct/EditProduct'
 import ProductDetails from './components/productsList/productDetails/ProductDetails'
+import Cart from './pages/cart/Cart'
 
 const App = ({isAuth}) => {
   const dispatch = useDispatch()
@@ -39,6 +40,7 @@ const App = ({isAuth}) => {
           <Route path="/create/product" exact component={CreateProduct} />  
           <Route path="/edit/product/:id" exact component={EditProduct} />  
           <Route path="/product/details/:id" exact component={ProductDetails} />  
+          <Route path="/cart" exact component={Cart} />  
           <Route path="/" exact component={Homepage} />
           <Redirect to="/" /> 
         </Switch>

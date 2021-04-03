@@ -13,3 +13,9 @@ export const FETCH_PRODUCTS = 'FETCH_PRODUCTS'
 export const FETCH_PRODUCT = 'FETCH_PRODUCT'
 export const DELETE_PRODUCT = 'DELETE_PRODUCT'
 export const EDIT_PRODUCT = 'EDIT_PRODUCT'
+
+// Cart operations
+export const ADD_TO_CART = 'ADD_TO_CART'
+export const REMOVE_FROM_CART = 'REMOVE_FROM_CART'
+export const ADJUST_QTY = 'ADJUST_QTY'
+export const LOAD_CURRENT_ITEM = 'LOAD_CURRENT_ITEM'

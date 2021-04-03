@@ -5,8 +5,9 @@ import classes from './AdminPanel.module.css'
 import AdminFilter from './adminFilter/AdminFilter'
 
 
-const AdminPanel = ({onSubmitHandler, HeaderTitle, TitlePlaceholder="", DescPlaceholder=""}) => {
+const AdminPanel = ({onSubmitHandler, HeaderTitle, TitlePlaceholder="", DescPlaceholder="", PricePlaceholder=0}) => {
   const [title, setTitle] = useState(TitlePlaceholder)
+  const [price, setPrice] = useState(PricePlaceholder)
   const [desc, setDesc] = useState(DescPlaceholder)
   const [selectedFile, setSelectedFile] = useState()
   const [imageUrl, setimageUrl] = useState()
@@ -16,6 +17,7 @@ const AdminPanel = ({onSubmitHandler, HeaderTitle, TitlePlaceholder="", DescPlac
   const [titleError, setTitleError] = useState({})
   const [descError, setDescError] = useState({})
   const [selectedFileError, setselectedFileError] = useState({})
+  const [priceError, setPriceError] = useState({})
 
 
   const handleDropdownChange = (e) => {
@@ -50,6 +52,7 @@ const AdminPanel = ({onSubmitHandler, HeaderTitle, TitlePlaceholder="", DescPlac
             desc: desc,
             img: selectedFile,
             imgUrl: url,
+            price: price,
             category: selecOptiontValue,
           
           }
@@ -64,6 +67,7 @@ const AdminPanel = ({onSubmitHandler, HeaderTitle, TitlePlaceholder="", DescPlac
       setTitle("")
       setDesc("")
       setSelectedFile(null)
+      setPrice(0)
       setSelectOptionValue("cat1")
       
     }
@@ -75,6 +79,7 @@ const AdminPanel = ({onSubmitHandler, HeaderTitle, TitlePlaceholder="", DescPlac
     const titleError = {}
     const descError = {}
     const selectedFileError = {}
+    const priceError = {}
     let isValid = true;
     
 
@@ -100,7 +105,7 @@ const AdminPanel = ({onSubmitHandler, HeaderTitle, TitlePlaceholder="", DescPlac
       isValid = false
     }
 
-    if(desc.trim().length > 85) {
+    if(desc.trim().length > 1850) {
       descError.TitleIsTooLong = "Description is too long."
       isValid = false
     }
@@ -115,11 +120,17 @@ const AdminPanel = ({onSubmitHandler, HeaderTitle, TitlePlaceholder="", DescPlac
       selectedFileError.insertImg = "Insert Image"
       isValid = false
     }
+    
+    // Validation for Price
+    if(price === 0) {
+      priceError.insertPrice = "Please insert the product price"
+    }
 
     
     setTitleError(titleError)
     setDescError(descError)
     setselectedFileError(selectedFileError)
+    setPriceError(priceError)
     return isValid;
     
   }
@@ -154,17 +165,38 @@ const AdminPanel = ({onSubmitHandler, HeaderTitle, TitlePlaceholder="", DescPlac
           return <div  key={key} style={{color: 'red'}}>{titleError[key]}</div>
         } )}
         <label>Product Description</label>
-        <input 
+        <textarea 
         className={classes.ProductInput} 
         placeholder="Description" 
         type="text" 
         autoComplete="off" 
         value={desc}
         onChange={(e) => {setDesc(e.target.value)}}
-        />
+        style={{
+          height: "8rem",
+          padding: ".7rem 2rem",
+          backgroundColor: "#eaeaea",
+          border: "none"
+        }}
+        ></textarea>
         {Object.keys(descError).map((key) => {
           return <div key={key} style={{color: 'red'}}>{descError[key]}</div>
         } )}
+        {/** Price */}
+        <label>Product Price</label>
+        <input 
+        className={classes.ProductInput} 
+        placeholder="Price" 
+        type="number" 
+        autoComplete="off"
+        value={price}
+        
+        onChange={(e) => {setPrice(e.target.value)}}
+        />
+         {Object.keys(priceError).map((key) => {
+          return <div key={key} style={{color: 'red'}}>{priceError[key]}</div>
+        } )}
+        {/** Price */}
         <label>Product Category</label>
         <select onChange={handleDropdownChange} className={classes.SelectField}>
               <option value="cat1">Category1</option>

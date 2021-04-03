@@ -73,7 +73,7 @@ const MyProducts = ({products, authLocalId, authUid, match, product}) => {
                             `} style={{backgroundImage: "url(" + `"${product.imgUrl}"` + ")"}}></div>
                             <div className={classes.CardContent}>
                                 <div className={classes.CardTitle}>{product.title}</div>
-                                <p className={classes.CardText}>{product.desc}</p>
+                                <p className={classes.CardText}>{product.desc ? product.desc.slice(0, 100):  null}</p>
                                 {renderDeleteAndEditBtn(product)}
                             </div>
                             </div>

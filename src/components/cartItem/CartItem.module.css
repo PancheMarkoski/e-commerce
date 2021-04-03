@@ -1,0 +1,137 @@
+.MyProducts {
+  color: #999999;
+  font-style: normal;
+  font-weight: 900;
+  letter-spacing: 0;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  margin: 2rem 0;
+  text-align: center;
+}
+
+.H {
+  color: #712020c9;
+  margin-top: 2rem;
+}
+
+img {
+  height: auto;
+  max-width: 100%;
+  vertical-align: middle;
+}
+
+.CardsItem {
+  display: flex;
+  padding: 1rem;
+  width: 70vh;
+  margin: 14px;
+  text-align: center;
+  line-height: 75px;
+  font-size: 30px;
+  justify-content: center;
+}
+@media (min-width: 40rem) {
+  .cards__item {
+    width: 50%;
+  }
+}
+@media (min-width: 56rem) {
+  .cards__item {
+    width: 33.3333%;
+  }
+}
+.Card {
+  background-color: white;
+  border-radius: 0.25rem;
+  box-shadow: 0 20px 40px -14px rgba(0, 0, 0, 0.25);
+  display: flex;
+  flex-direction: row;
+  overflow: hidden;
+}
+.Card:hover .CardImage {
+  filter: contrast(100%);
+}
+.CardContent {
+  display: flex;
+  flex: 1 1 auto;
+  flex-direction: column;
+  padding: 1rem;
+}
+.CardImage {
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  border-top-left-radius: 0.25rem;
+  border-top-right-radius: 0.25rem;
+  filter: contrast(70%);
+  overflow: hidden;
+  position: relative;
+  transition: filter 0.5s cubic-bezier(0.43, 0.41, 0.22, 0.91);
+}
+.CardImage::before {
+  content: "";
+  display: block;
+  padding-top: 56.25%;
+}
+@media (min-width: 40rem) {
+  .card__image::before {
+    padding-top: 66.6%;
+  }
+}
+.CardImageFlowers {
+  height: auto;
+  max-width: 30%;
+  vertical-align: middle;
+  width: 30rem;
+}
+
+.CardTitle {
+  color: #696969;
+  font-size: 1.6rem;
+  font-weight: 300;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+.CardText {
+  flex: 1 1 auto;
+  font-size: 1.275rem;
+  line-height: 1.5;
+  margin-bottom: 1.25rem;
+  margin-top: 0;
+}
+
+.cartCtrl {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.Qty {
+  width: 8rem;
+  line-height: 1rem;
+  border-radius: 2rem;
+}
+
+.Qty input {
+  border-radius: 2rem;
+}
+
+.Qty label {
+  font-size: 1.3rem;
+  font-weight: bold;
+}
+
+.Price {
+  font-size: 1.3rem;
+  font-weight: bold;
+}
+
+.DeleteItemBtn {
+  border-radius: 20px;
+  border: 1px solid #f3f0f0;
+  background-color: rgb(206, 0, 0);
+  color: #ffffff;
+  padding: 1.3rem;
+  cursor: pointer;
+}

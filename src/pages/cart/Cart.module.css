@@ -1,0 +1,79 @@
+.CartHeader {
+  color: #712020c9;
+  margin-top: 2rem;
+}
+
+.Cart {
+  display: flex;
+  justify-content: space-around;
+}
+
+@media (max-width: 800px) {
+  .Cart {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+}
+
+.Cards {
+  display: flex;
+  flex-wrap: wrap;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.CartSummary {
+  background-color: white;
+  border-radius: 0.25rem;
+  box-shadow: 0 20px 40px -14px rgba(0, 0, 0, 0.25);
+  overflow: hidden;
+  padding: 1rem;
+  width: 50vh;
+  margin: 14px;
+  text-align: center;
+  line-height: 75px;
+  font-size: 30px;
+  height: 30vh;
+}
+
+.CardContent {
+  display: flex;
+  flex: 1 1 auto;
+  flex-direction: column;
+  padding: 1rem;
+}
+
+.CardTitle {
+  color: #696969;
+  font-size: 1.6rem;
+  font-weight: 300;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+.CardText {
+  flex: 1 1 auto;
+  font-size: 1.275rem;
+  line-height: 1.5;
+  margin-bottom: 1.25rem;
+  margin-top: 0;
+}
+
+.CartTotal {
+  margin-top: -2rem;
+  display: flex;
+  justify-content: space-around;
+}
+
+.CartTotal span {
+  font-size: 2.3rem;
+}
+
+.CardContent button {
+  background-color: #4caf50;
+  border-color: #4caf50;
+  cursor: pointer;
+}

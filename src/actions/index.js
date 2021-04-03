@@ -13,7 +13,11 @@ import {
    FETCH_PRODUCTS,
    FETCH_PRODUCT,
    EDIT_PRODUCT,
-   DELETE_PRODUCT
+   DELETE_PRODUCT,
+   ADD_TO_CART,
+   REMOVE_FROM_CART,
+   ADJUST_QTY,
+   LOAD_CURRENT_ITEM
 } from './types';
 
 export const signIn = (userData, idToken) => {
@@ -183,4 +187,46 @@ export const deleteProduct = (id) => async dispatch => {
 
    dispatch({type: DELETE_PRODUCT, payload: id})
    history.push('/myproducts')
+}
+
+// CART ITEM ACTION
+
+// add item to cart
+export const addToCart = (itemID) => {
+   return{
+      type: ADD_TO_CART,
+      payload: {
+         id: itemID
+      } 
+   }
+}
+
+// remove item from cart
+export const removeFromCart = (itemID) => {
+   return {
+      type: REMOVE_FROM_CART,
+      payload: {
+         id: itemID
+      }     
+   }
+}
+
+// adjustQty
+export const adjustQty = (itemID, value) => {
+   return {
+      type: ADJUST_QTY,
+      payload: {
+         id: itemID,
+         qty: value
+      }
+   }
+}
+
+
+// load current item
+export const loadCurrentItem = (item) => {
+   return{
+      type: LOAD_CURRENT_ITEM,
+      payload: item
+   }
 }
