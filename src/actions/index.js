@@ -1,6 +1,7 @@
 import fireAuthApi from '../apis/fireAuth';
 import fireUser from '../apis/fireUser';
 import fireDb from '../apis/fireDatabase';
+import fireDbUser from '../apis/fireDbUser'
 import history from '../history';
 import { 
    SIGN_IN,
@@ -119,6 +120,28 @@ export const authCheckState = () => dispatch => {
       dispatch(logout())
    }else{
       dispatch(singInWithGoogle(userData, token))
+   }
+}
+
+// Post auth user data to real time database
+export const userDatabase = () => async (dispatch, getState) =>{
+   const userData = await getState().auth.authData
+   if(userData !== null) {
+      const res = await fireDbUser.get(`/usersData.json`)
+      const fatchedUsers = [];
+      for (let key in res.data) {
+         if(key) {
+            fatchedUsers.push({
+               ...res.data[key],
+               id: key,
+             });
+         }
+      }
+      // find user id from fire db and compare with user id from auth
+      const userID = fatchedUsers.find((user) => user.uid === userData.uid ? true : false)
+      if(!userID) {
+         await fireDbUser.post("/usersData.json", userData) 
+      }
    }
 }
 

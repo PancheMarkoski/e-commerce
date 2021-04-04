@@ -1,7 +1,7 @@
 import React, {useEffect} from 'react'
 import {Router, Route, Switch, Redirect} from 'react-router-dom'
 import {connect, useDispatch} from 'react-redux'
-import {authCheckState} from './actions'
+import {authCheckState, userDatabase} from './actions'
 
 import history from './history'
 import Homepage from './pages/homepage/Homepage'
@@ -19,8 +19,16 @@ const App = ({isAuth}) => {
   const dispatch = useDispatch()
   useEffect(() => {
     dispatch(authCheckState())
-  }, );
+    
+  }, [isAuth]);
 
+
+    useEffect(() => {
+      if(isAuth){
+        dispatch(userDatabase())
+      }
+    }, [isAuth])
+  
 
   let route = (
     <Switch>
@@ -58,8 +66,8 @@ const App = ({isAuth}) => {
 
 const mapStateToProps = (state) => {
   return {
-    isAuth: state.auth.idToken === null 
+    isAuth: state.auth.idToken === null,
   }
 }
 
-export default connect(mapStateToProps, {authCheckState})(App)
+export default connect(mapStateToProps, {authCheckState, userDatabase})(App)
